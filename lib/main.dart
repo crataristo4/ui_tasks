@@ -14,10 +14,10 @@ class UI extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'UI',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity
-      ),
+          primarySwatch: Colors.green,
+          visualDensity: VisualDensity.adaptivePlatformDensity),
       initialRoute: HomePage.routeName,
       onGenerateRoute: RouteGenerator.generateRoute,
       home: HomePage(),
