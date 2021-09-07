@@ -28,7 +28,11 @@ class _MainPageState extends State<MainPage> {
               buildStories(Colors.deepPurpleAccent, 'tweetasm'),
             ],
           ),
-        )
+        ),
+        SizedBox(
+          height: sixteenDp,
+        ),
+        buildContent()
       ],
     );
   }
@@ -133,6 +137,104 @@ class _MainPageState extends State<MainPage> {
         ),
         Text(name),
       ],
+    );
+  }
+
+  Widget buildContent() {
+    return Column(
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  height: eightyDp,
+                  width: hundredDp,
+                  child: Stack(
+                    children: [
+                      buildUserImage('assets/images/a.jpg'),
+                      Positioned(
+                        child: buildUserImage('assets/images/b.jpg'),
+                        top: sixteenDp,
+                        left: thirtyDp,
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '@redbullracing',
+                      style: TextStyle(
+                          fontSize: twentyDp, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: eightDp,
+                    ),
+                    Text.rich(
+                      TextSpan(
+                        style: TextStyle(fontSize: eighteenDp),
+                        text: ownedBy,
+                        children: [
+                          TextSpan(
+                              text: ' @abcd',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                        ],
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+            Container(
+              margin:
+                  EdgeInsets.symmetric(vertical: twentyDp, horizontal: tenDp),
+              child: Row(
+                children: [
+                  Container(
+                    height: thirtyDp,
+                    width: thirtyDp,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/pin.png',
+                      ),
+                    )),
+                  ),
+                  Container(
+                    height: thirtyDp,
+                    width: thirtyDp,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/menu.png',
+                      ),
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+
+  Widget buildUserImage(image) {
+    return Container(
+      margin: EdgeInsets.only(left: eightDp),
+      width: sixtyDp,
+      height: sixtyDp,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(color: Colors.white, width: 3),
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: AssetImage('$image'),
+          )),
     );
   }
 }
