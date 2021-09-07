@@ -33,7 +33,17 @@ class _MainPageState extends State<MainPage> {
         SizedBox(
           height: sixteenDp,
         ),
-        buildContent()
+        Expanded(
+            child: ListView.builder(
+          physics: ClampingScrollPhysics(),
+          primary: true,
+          padding: EdgeInsets.all(0),
+          itemBuilder: (context, index) {
+            return buildContent();
+          },
+          itemCount: 10000,
+          shrinkWrap: true,
+        ))
       ],
     );
   }
@@ -143,141 +153,166 @@ class _MainPageState extends State<MainPage> {
 
   //contains user name , images and menus
   Widget buildContent() {
-    return Column(
-      children: [
-        //first row
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Container(
-                  height: sixtyDp,
-                  width: seventyDp,
-                  child: Stack(
-                    children: [
-                      buildUserImage('assets/images/a.jpg'),
-                      Positioned(
-                        child: buildUserImage('assets/images/b.jpg'),
-                        top: fourteenDp,
-                        left: sixteenDp,
-                      ),
-                    ],
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '@redbullracing',
-                      style: TextStyle(
-                          fontSize: twentyDp, fontWeight: FontWeight.bold),
-                    ),
-                    Text.rich(
-                      TextSpan(
-                        style: TextStyle(fontSize: eighteenDp),
-                        text: ownedBy,
-                        children: [
-                          TextSpan(
-                              text: ' @abcd',
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-            Container(
-              margin:
-                  EdgeInsets.symmetric(vertical: twelveDp, horizontal: tenDp),
-              child: Row(
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 20),
+      child: Column(
+        children: [
+          //first row
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
                 children: [
-                  showMenuItem(
-                    'assets/images/pin.png',
+                  Container(
+                    height: sixtyDp,
+                    width: seventyDp,
+                    child: Stack(
+                      children: [
+                        buildUserImage('assets/images/a.jpg'),
+                        Positioned(
+                          child: buildUserImage('assets/images/b.jpg'),
+                          top: fourteenDp,
+                          left: sixteenDp,
+                        ),
+                      ],
+                    ),
                   ),
-                  showMenuItem(
-                    'assets/images/menu.png',
-                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '@redbullracing',
+                        style: TextStyle(
+                            fontSize: twentyDp, fontWeight: FontWeight.bold),
+                      ),
+                      Text.rich(
+                        TextSpan(
+                          style: TextStyle(fontSize: eighteenDp),
+                          text: ownedBy,
+                          children: [
+                            TextSpan(
+                                text: ' @abcd',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
-            ),
-          ],
-        ),
-        //Second row
-        // image of content todo --
-        Container(
-          height: 270,
-          child: Stack(
-            children: [
               Container(
-                child: Image.asset(
-                  'assets/images/b.jpg',
-                  height: twoFiftyDp,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              PositionedDirectional(
-                start: hundredDp,
-                end: hundredDp,
-                top: 230,
-                child: Container(
-                  //margin: EdgeInsets.symmetric(horizontal: 100),
-                  height: fortyDp, width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.9),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.white.withOpacity(0.5),
-                            Colors.white
-                          ]),
-                      borderRadius: BorderRadius.circular(thirtyTwoDp)),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      //todo -- not dynamic
-                      buildImage('assets/images/a.jpg'),
-                      buildImage('assets/images/b.jpg'),
-                      buildImage('assets/images/a.jpg'),
-                      buildImage('assets/images/b.jpg'),
-                    ],
-                  ),
+                margin:
+                    EdgeInsets.symmetric(vertical: twelveDp, horizontal: tenDp),
+                child: Row(
+                  children: [
+                    showMenuItem(
+                      'assets/images/pin.png',
+                    ),
+                    showMenuItem(
+                      'assets/images/menu.png',
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-        ),
-        //third row
-        buildMenu(),
-        //forth row
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: seventyDp,
-              margin: EdgeInsets.only(left: tenDp),
-              child: Stack(
-                children: [
-                  //stacked images
+          //Second row
+          // image of content todo --
+          Container(
+            height: 270,
+            child: Stack(
+              children: [
+                Container(
+                  child: Image.asset(
+                    'assets/images/b.jpg',
+                    height: twoFiftyDp,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                PositionedDirectional(
+                  start: hundredDp,
+                  end: hundredDp,
+                  top: 230,
+                  child: Container(
+                    //margin: EdgeInsets.symmetric(horizontal: 100),
+                    height: fortyDp, width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.white.withOpacity(0.5),
+                              Colors.white
+                            ]),
+                        borderRadius: BorderRadius.circular(thirtyTwoDp)),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        //todo -- not dynamic
+                        buildImage('assets/images/a.jpg'),
+                        buildImage('assets/images/b.jpg'),
+                        buildImage('assets/images/a.jpg'),
+                        buildImage('assets/images/b.jpg'),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          //third row
+          buildMenu(),
+          //forth row
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: seventyDp,
+                margin: EdgeInsets.only(left: tenDp),
+                child: Stack(
+                  children: [
+                    //stacked images
 
-                  Positioned(
-                      child: buildImage('assets/images/b.jpg'), left: 36),
-                  Positioned(
-                      child: buildImage('assets/images/ax.jpg'), left: 26),
-                  Positioned(
-                      child: buildImage('assets/images/b.jpg'), left: 14),
-                  buildImage('assets/images/a.jpg'),
-                ],
+                    Positioned(
+                        child: buildImage('assets/images/b.jpg'), left: 36),
+                    Positioned(
+                        child: buildImage('assets/images/ax.jpg'), left: 26),
+                    Positioned(
+                        child: buildImage('assets/images/b.jpg'), left: 14),
+                    buildImage('assets/images/a.jpg'),
+                  ],
+                ),
               ),
-            )
-          ],
-        )
-      ],
+              Text.rich(
+                TextSpan(
+                  style: TextStyle(fontSize: fourteenDp),
+                  text: likedBy,
+                  children: [
+                    TextSpan(
+                        text: ' 10,223,355',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                      text: ' $others',
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+          //fifth row
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: tenDp),
+            child: Text(
+              dummy,
+              style: TextStyle(fontSize: twentyDp),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
