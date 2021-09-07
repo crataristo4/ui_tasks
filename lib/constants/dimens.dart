@@ -1,4 +1,5 @@
 const sixteenDp = 16.0;
+const eighteenDp = 18.0;
 const eightDp = 8.0;
 const fourDp = 4.0;
 const twentyFourDp = 24.0;
