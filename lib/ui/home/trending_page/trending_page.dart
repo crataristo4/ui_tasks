@@ -10,6 +10,6 @@ class TrendingPage extends StatefulWidget {
 class _TrendingPageState extends State<TrendingPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(decoration: BoxDecoration(color: Colors.black54));
+    return Container(decoration: BoxDecoration(color: Colors.white));
   }
 }

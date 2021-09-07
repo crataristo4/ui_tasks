@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ui/constants/dimens.dart';
 import 'package:ui/constants/strings.dart';
 import 'package:ui/ui/home/explore_page/explore_page.dart';
@@ -32,6 +33,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return Scaffold(
       body: Column(
         children: [
@@ -41,7 +44,7 @@ class _HomePageState extends State<HomePage>
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.all(tenDp),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
