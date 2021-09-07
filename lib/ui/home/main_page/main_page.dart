@@ -241,10 +241,10 @@ class _MainPageState extends State<MainPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       //todo -- not dynamic
-                      buildImage(),
-                      buildImage(),
-                      buildImage(),
-                      buildImage(),
+                      buildImage('assets/images/a.jpg'),
+                      buildImage('assets/images/b.jpg'),
+                      buildImage('assets/images/a.jpg'),
+                      buildImage('assets/images/b.jpg'),
                     ],
                   ),
                 ),
@@ -253,17 +253,40 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         //third row
-        buildMenu()
+        buildMenu(),
+        //forth row
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: seventyDp,
+              margin: EdgeInsets.only(left: tenDp),
+              child: Stack(
+                children: [
+                  //stacked images
+
+                  Positioned(
+                      child: buildImage('assets/images/b.jpg'), left: 36),
+                  Positioned(
+                      child: buildImage('assets/images/ax.jpg'), left: 26),
+                  Positioned(
+                      child: buildImage('assets/images/b.jpg'), left: 14),
+                  buildImage('assets/images/a.jpg'),
+                ],
+              ),
+            )
+          ],
+        )
       ],
     );
   }
 
-  Widget buildImage() {
+  Widget buildImage(image) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: eightDp),
       child: CircleAvatar(
         radius: 14,
-        backgroundImage: AssetImage('assets/images/a.jpg'),
+        backgroundImage: AssetImage(image),
       ),
     );
   }
