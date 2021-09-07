@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui/constants/dimens.dart';
 import 'package:ui/constants/strings.dart';
@@ -140,6 +141,7 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
+  //contains user name , images and menus
   Widget buildContent() {
     return Column(
       children: [
@@ -191,7 +193,7 @@ class _MainPageState extends State<MainPage> {
             ),
             Container(
               margin:
-                  EdgeInsets.symmetric(vertical: twentyDp, horizontal: tenDp),
+              EdgeInsets.symmetric(vertical: twentyDp, horizontal: tenDp),
               child: Row(
                 children: [
                   Container(
@@ -199,10 +201,10 @@ class _MainPageState extends State<MainPage> {
                     width: thirtyDp,
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/pin.png',
-                      ),
-                    )),
+                          image: AssetImage(
+                            'assets/images/pin.png',
+                          ),
+                        )),
                   ),
                   Container(
                     height: thirtyDp,
@@ -218,8 +220,64 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
           ],
+        ),
+        //image of content todo --
+        Container(
+          height: 270,
+          child: Stack(
+            children: [
+              Container(
+                child: Image.asset(
+                  'assets/images/b.jpg',
+                  height: twoFiftyDp,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              PositionedDirectional(
+                start: hundredDp,
+                end: hundredDp,
+                top: 230,
+                child: Container(
+                  //margin: EdgeInsets.symmetric(horizontal: 100),
+                  height: fortyDp, width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.9),
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white.withOpacity(0.5),
+                            Colors.white
+                          ]),
+                      borderRadius: BorderRadius.circular(thirtyTwoDp)),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      //todo -- not dynamic
+                      buildImage(),
+                      buildImage(),
+                      buildImage(),
+                      buildImage(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         )
       ],
+    );
+  }
+
+  Widget buildImage() {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: eightDp),
+      child: CircleAvatar(
+        radius: 14,
+        backgroundImage: AssetImage('assets/images/a.jpg'),
+      ),
     );
   }
 
