@@ -1,0 +1,28 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:ui/route_generator.dart';
+import 'package:ui/ui/home/home_page/home_page.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(UI()));
+}
+
+class UI extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'UI',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity
+      ),
+      initialRoute: HomePage.routeName,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      home: HomePage(),
+    );
+  }
+}
+
+
