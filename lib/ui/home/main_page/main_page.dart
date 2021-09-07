@@ -145,6 +145,7 @@ class _MainPageState extends State<MainPage> {
   Widget buildContent() {
     return Column(
       children: [
+        //first row
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,15 +153,15 @@ class _MainPageState extends State<MainPage> {
             Row(
               children: [
                 Container(
-                  height: eightyDp,
-                  width: hundredDp,
+                  height: sixtyDp,
+                  width: seventyDp,
                   child: Stack(
                     children: [
                       buildUserImage('assets/images/a.jpg'),
                       Positioned(
                         child: buildUserImage('assets/images/b.jpg'),
-                        top: sixteenDp,
-                        left: thirtyDp,
+                        top: fourteenDp,
+                        left: sixteenDp,
                       ),
                     ],
                   ),
@@ -172,9 +173,6 @@ class _MainPageState extends State<MainPage> {
                       '@redbullracing',
                       style: TextStyle(
                           fontSize: twentyDp, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: eightDp,
                     ),
                     Text.rich(
                       TextSpan(
@@ -193,35 +191,22 @@ class _MainPageState extends State<MainPage> {
             ),
             Container(
               margin:
-              EdgeInsets.symmetric(vertical: twentyDp, horizontal: tenDp),
+                  EdgeInsets.symmetric(vertical: twelveDp, horizontal: tenDp),
               child: Row(
                 children: [
-                  Container(
-                    height: thirtyDp,
-                    width: thirtyDp,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                            'assets/images/pin.png',
-                          ),
-                        )),
+                  showMenuItem(
+                    'assets/images/pin.png',
                   ),
-                  Container(
-                    height: thirtyDp,
-                    width: thirtyDp,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                      image: AssetImage(
-                        'assets/images/menu.png',
-                      ),
-                    )),
+                  showMenuItem(
+                    'assets/images/menu.png',
                   ),
                 ],
               ),
             ),
           ],
         ),
-        //image of content todo --
+        //Second row
+        // image of content todo --
         Container(
           height: 270,
           child: Stack(
@@ -266,7 +251,9 @@ class _MainPageState extends State<MainPage> {
               ),
             ],
           ),
-        )
+        ),
+        //third row
+        buildMenu()
       ],
     );
   }
@@ -284,15 +271,57 @@ class _MainPageState extends State<MainPage> {
   Widget buildUserImage(image) {
     return Container(
       margin: EdgeInsets.only(left: eightDp),
-      width: sixtyDp,
-      height: sixtyDp,
+      width: fortyDp,
+      height: fortyDp,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
-          border: Border.all(color: Colors.white, width: 3),
+          borderRadius: BorderRadius.circular(thirtyDp),
+          border: Border.all(color: Colors.black54, width: 3),
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage('$image'),
           )),
+    );
+  }
+
+  Widget buildMenu() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          children: [
+            showMenuItem(
+              'assets/images/whatshot.png',
+            ),
+            showMenuItem(
+              'assets/images/chatbubble.png',
+            ),
+            showMenuItem(
+              'assets/images/sent.png',
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: twentyDp),
+          child: showMenuItem(
+            'assets/images/trophy.png',
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget showMenuItem(image) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: sixDp),
+      height: thirtyDp,
+      width: thirtyDp,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+        image: AssetImage(
+          image, //todo --- to be changed
+        ),
+      )),
     );
   }
 }
