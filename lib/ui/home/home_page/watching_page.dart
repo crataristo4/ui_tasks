@@ -6,6 +6,7 @@ import 'package:ui/constants/strings.dart';
 import 'package:ui/ui/home/explore_page/explore_page.dart';
 import 'package:ui/ui/home/main_page/main_page.dart';
 import 'package:ui/ui/home/trending_page/trending_page.dart';
+import 'package:ui/widget/show_icons.dart';
 
 import 'leftRoundedClipper.dart';
 
@@ -54,10 +55,11 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width, 250),
+        preferredSize: Size(MediaQuery.of(context).size.width, twoFiftyDp),
         child: Container(
-          color: Colors.deepOrange,
+          color: Colors.teal,
           child: Stack(
             children: [
               AnimatedContainer(
@@ -65,7 +67,7 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                 width: animation.value,
                 height: animation.value <= 150 ? 150 : animation.value,
                 decoration: BoxDecoration(
-                  color: Colors.deepOrange,
+                  color: Colors.teal,
                 ),
               ),
               Align(
@@ -74,7 +76,6 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                   turns: AlwaysStoppedAnimation(0 / 360),
                   child: ClipPath(
                     clipper: LeftRoundedClipper(flip: true),
-                    //LeftRoundedClipper(),//LeftRoundedClipper(),
                     child: AnimatedContainer(
                       duration: Duration(milliseconds: 400),
                       width: animation2.value - 10,
@@ -83,7 +84,7 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                               .size
                               .height, //<= 150 ? 200 :animation.value,
                       decoration: BoxDecoration(
-                          color: Colors.orange,
+                          color: Colors.teal,
                           gradient: LinearGradient(
                             colors: [
                               Colors.lightGreen.withGreen(10),
@@ -99,7 +100,7 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                 alignment: Alignment.bottomCenter,
                 child: CurvedNavigationBar(
                   key: _bottomNavigationKey,
-                  height: 60,
+                  height: 65,
                   color: Colors.white,
                   buttonBackgroundColor: Colors.transparent,
                   backgroundColor: Colors.transparent,
@@ -138,21 +139,21 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                       Main,
                       style: index == 0
                           ? TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold)
+                          color: Colors.white, fontWeight: FontWeight.bold)
                           : TextStyle(color: Colors.black54),
                     ),
                     Text(
                       trending,
                       style: index == 1
                           ? TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold)
+                          color: Colors.white, fontWeight: FontWeight.bold)
                           : TextStyle(color: Colors.black54),
                     ),
                     Text(
                       explore,
                       style: index == 2
                           ? TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold)
+                          color: Colors.white, fontWeight: FontWeight.bold)
                           : TextStyle(color: Colors.black54),
                     ),
                   ],
@@ -161,7 +162,8 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
               Align(
                   alignment: Alignment.bottomLeft,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 60.0, left: 10),
+                    padding:
+                        const EdgeInsets.only(bottom: sixtyDp, left: tenDp),
                     child: ListTile(
                         title: Text(
                       titles[index],
@@ -179,7 +181,10 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       index == 0
-                          ? Image.asset('assets/icons/User.png')
+                          ? ShowIcon(
+                              iconName: 'assets/icons/User.png',
+                              onIconTap: () {},
+                            )
                           : SizedBox(),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -187,15 +192,22 @@ class _WatchState extends State<Watching> with TickerProviderStateMixin {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: fourteenDp),
-                              child: Image.asset(
-                                  'assets/icons/MagnifyingGlass.png'),
+                              child: ShowIcon(
+                                iconName: 'assets/icons/MagnifyingGlass.png',
+                                onIconTap: () {},
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: fourteenDp),
-                              child:
-                                  Image.asset('assets/icons/BellRinging.png'),
+                              child: ShowIcon(
+                                iconName: 'assets/icons/BellRinging.png',
+                                onIconTap: () {},
+                              ),
                             ),
-                            Image.asset('assets/icons/PaperPlane.png'),
+                            ShowIcon(
+                              iconName: 'assets/icons/PaperPlane.png',
+                              onIconTap: () {},
+                            ),
                           ],
                         ),
                       )

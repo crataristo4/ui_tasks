@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TrendingPage extends StatefulWidget {
-  const TrendingPage({Key? key}) : super(key: key);
+  final set_state;
+
+  const TrendingPage({Key? key, required this.set_state}) : super(key: key);
 
   @override
   _TrendingPageState createState() => _TrendingPageState();

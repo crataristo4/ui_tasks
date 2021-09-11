@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ui/route_generator.dart';
-import 'package:ui/ui/home/home_page/home_page.dart';
+import 'package:ui/ui/home/home_page/watching_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +17,9 @@ class UI extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.green,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      initialRoute: HomePage.routeName,
-      onGenerateRoute: RouteGenerator.generateRoute,
-      home: HomePage(),
+      /*  initialRoute: HomePage.routeName,
+      onGenerateRoute: RouteGenerator.generateRoute,*/
+      home: Watching(false),
     );
   }
 }

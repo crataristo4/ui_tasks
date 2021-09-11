@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ui/constants/dimens.dart';
 import 'package:ui/constants/strings.dart';
-import 'package:ui/ui/home/explore_page/explore_page.dart';
-import 'package:ui/ui/home/main_page/main_page.dart';
-import 'package:ui/ui/home/trending_page/trending_page.dart';
 
 class HomePage extends StatefulWidget {
   static const routeName = '/homepage';
@@ -100,12 +97,12 @@ class _HomePageState extends State<HomePage>
               ],
             ),
           ),
-          Expanded(
+          /*Expanded(
             child: TabBarView(
               controller: _tabController,
               children: [MainPage(), TrendingPage(), ExplorePage()],
             ),
-          )
+          )*/
         ],
       ),
     );
